@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/add-veiculo")
+@WebServlet("/veiculos")
 public class AddVeiculoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -17,7 +17,7 @@ public class AddVeiculoServlet extends HttpServlet {
         String marca = req.getParameter("marca");
         String ano = req.getParameter("ano");
         String placa = req.getParameter("placa");
-        Double quilometragem = null;
+        Double quilometragem;
         try {
             quilometragem = Double.parseDouble(req.getParameter("quilometragem"));
         } catch (NumberFormatException e) {
@@ -26,12 +26,14 @@ public class AddVeiculoServlet extends HttpServlet {
         }
         Boolean disponivel = Boolean.parseBoolean(req.getParameter("disponivel"));
 
-        System.out.println(tipo);
-        System.out.println(modelo);
-        System.out.println(marca);
-        System.out.println(ano);
-        System.out.println(placa);
-        System.out.println(quilometragem);
-        System.out.println(disponivel);
+        req.setAttribute("tipo",tipo);
+        req.setAttribute("modelo",modelo);
+        req.setAttribute("marca",marca);
+        req.setAttribute("ano",ano);
+        req.setAttribute("placa",placa);
+        req.setAttribute("quilometragem",quilometragem);
+        req.setAttribute("disponivel",disponivel);
+
+        req.getRequestDispatcher("/resumo.jsp").forward(req, resp);
     }
 }

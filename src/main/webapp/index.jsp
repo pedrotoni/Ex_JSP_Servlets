@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt">
 <html>
+<head>
+<title>Formulario</title>
+</head>
 <body>
-<form action="add-veiculo" method="post">
+<form action="veiculos" method="post">
     <label for="tipo-veiculo">Tipo do Veiculo: </label>
         <select name="tipo-veiculo">
             <option value="carro">Carro</option>
